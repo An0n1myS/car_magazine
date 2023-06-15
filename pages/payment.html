@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'templates/header-links.html' %}
+    <title>Payment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+</head>
+<body>
+    {% include 'templates/header.html' %}
+    <h1>Оплата замовлення</h1>
+    <div class="order-details">
+        <p><strong>ID замовлення:</strong> {{ order.order_id }}</p>
+        <p><strong>Дата замовлення:</strong> {{ order.order_date }}</p>
+        <p><strong>Статус замовлення:</strong> {{ order.status }}</p>
+    </div>
+    <h2>Оплата</h2>
+    <form action="/process_payment" method="post">
+        <div class="payment-form">
+            <label for="card_number">Номер карти:</label>
+            <input type="text" id="card_number" name="card_number" required>
+            <br>
+            <label for="cardholder_name">Ім'я власника карти:</label>
+            <input type="text" id="cardholder_name" name="cardholder_name" required>
+            <br>
+            <label for="expiration_date">Термін дії:</label>
+            <input type="text" id="expiration_date" name="expiration_date" required>
+            <br>
+            <label for="cvv">CVV-код:</label>
+            <input type="text" id="cvv" name="cvv" required>
+            <br>
+            <button type="submit">Заплатити</button>
+        </div>
+    </form>
+    {% include 'templates/footer.html' %}
+</body>
+</html>

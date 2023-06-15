@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    {% include 'templates/header-links.html' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+</head>
+<body>
+    {% include 'templates/header.html' %}
+        <br>
+    <br>
+    <br>
+    <br>
+    <div class="content">
+        {% block content %}
+            <h1>Реєстрація</h1>
+            <form action="/register" method="post">
+                <label for="first_name">Ім'я:</label>
+                <input type="text" id="first_name" name="first_name" required>
+                <label for="last_name">Прізвище:</label>
+                <input type="text" id="last_name" name="last_name" required>
+                <label for="email">Пошта:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="email">Телефон:</label>
+                <input type="text" id="phone" name="phone" required>
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Зареєструватися</button>
+            </form>
+        {% endblock %}
+    </div>
+        <br>
+    <br>
+    <br>
+    <br>
+    {% include 'templates/footer.html' %}
+</body>
+</html>

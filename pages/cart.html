@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    {% include 'templates/header-links.html' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+</head>
+<body>
+    {% include 'templates/header.html' %}
+    <br>
+    <br>
+    <h1>Кошик</h1>
+    <div class="cart-items">
+        {% if cart_items %}
+            <table>
+                <tr>
+                    <th>№</th>
+                    <th>Назва продукту</th>
+                    <th>Кількість</th>
+                    <th>Ціна</th>
+                    <th>Операції</th>
+                </tr>
+                {% for item in cart_items %}
+                    {% set total_item_price = item.count * item.price %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.count }}</td>
+                        <td>{{ total_item_price }}$</td>
+                        <td><button class="cart-del-button">Видалити з корзини</button></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <form action="/create_order" method="POST">
+                <button type="submit" class="submit-cart-btn">Створити замовлення</button>
+            </form>
+        {% else %}
+            <p>Your cart is empty.</p>
+        {% endif %}
+    </div>
+
+    {% include 'templates/footer.html' %}
+</body>
+</html>

@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.order-details, .payment-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.order-details p {
+    margin: 10px 0;
+}
+
+.payment-form label {
+    display: inline-block;
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.payment-form input[type="text"] {
+    width: 240px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.payment-form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.payment-form button[type="submit"]:hover {
+    background-color: #45a049;
+}

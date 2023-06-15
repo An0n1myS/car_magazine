@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2, h3 {
+  margin-top: 0;
+}
+
+.info-container {
+  display: flex;
+  align-items: center;
+}
+
+.info-photo img {
+  max-width: 300px;
+  height: auto;
+}
+
+.part-info {
+  margin-left: 20px;
+}
+
+.comments-container {
+  margin-top: 20px;
+}
+
+.comment {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment p {
+  margin: 5px 0;
+}
+
+.rating-container {
+  margin-top: 20px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+
+.comment-form button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background-color: #45a049;
+}
+
+p a {
+  color: #0645AD;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+.confirm-btn{
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  text-decoration: none;
+ }
+
+ .count_part{
+ width: 40px;
+ padding: 4px;
+ }

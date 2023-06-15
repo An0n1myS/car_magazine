@@ -1,0 +1,64 @@
+/* profile.css */
+.content{
+width: 80%;
+margin-left:10%;
+}
+/* Заголовки */
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Деталі профілю */
+.profile-details {
+    margin-bottom: 30px;
+}
+
+.profile-details p {
+    margin-bottom: 10px;
+}
+
+/* Таблиця замовлень */
+.orders-table {
+    width: 80%;
+    margin-left: 10%;
+    border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.orders-table th {
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+/* Загальні стилі */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}

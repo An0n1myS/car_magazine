@@ -1,0 +1,46 @@
+/* Стилі для футера */
+
+footer {
+  background-color: #333;
+  padding: 20px;
+  color: #fff;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-section {
+  margin-right: 30px;
+}
+
+.footer-section h3 {
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.social-icons li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #555;
+}

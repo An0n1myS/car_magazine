@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'templates/header-links.html' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    {% include 'templates/header.html' %}
+    <!-- Навігаційний бар -->
+    <nav class="navbar">
+        <!-- Сортування -->
+        <div class="sorting">
+            <label for="sort-category">Категорія:</label>
+            <select id="sort-category">
+                <option value="">Всі категорії</option>
+                {% for category in categories %}
+                    <option value="{{ category[0] }}">{{ category[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="sort-manufacturer">Виробник:</label>
+            <select id="sort-manufacturer">
+                <option value="">Всі виробники</option>
+                {% for manufacturer in manufacturers %}
+                    <option value="{{ manufacturer[0] }}">{{ manufacturer[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="sort-price">Ціна:</label>
+            <select id="sort-price">
+                <option value="">Без сортування</option>
+                <option value="asc">За зростанням</option>
+                <option value="desc">За спаданням</option>
+            </select>
+            <button>Показати</button>
+        </div>
+    </nav>
+
+    <div class="content">
+            <!-- Поле пошуку -->
+        <div class="search">
+            <form>
+              <input type="text" id="search-input" placeholder="Пошук товару...">
+              <button type="submit">Пошук</button>
+            </form>
+        </div>
+        <!-- Список товарів -->
+        <div class="products">
+            {% for product in products %}
+                <div class="product">
+                    <a href="/part/{{ product[0] }}">
+                        <img src="data:image/jpeg;base64,{{ product.photos }}" alt="{{ product.part_id }}">
+                        <h3>{{ product.name }}</h3>
+                    </a>
+                    <p class="price">{{ product.price }}</p>
+                    <form class="product_info_form" action="/part/{{ product.part_id }}">
+                        <button class="product_btn">Детальніше</button>
+                    </form>
+                    <form action="" class="product_btn_form">
+                        <button class="product_btn">Додати у замовлення</button>
+                    </form>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    {% include 'templates/footer.html' %}
+
+</body>
+</html>

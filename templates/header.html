@@ -1,0 +1,23 @@
+<header>
+    <div class="logo">
+        <a href="/">Магазин автозапчастин</a>
+    </div>
+    <ul class="menu">
+        <li><a href="/">Головна</a></li>
+        <li><a href="/categories">Категорії</a></li>
+        <li><a href="/contact">Контакти</a></li>
+    </ul>
+
+    <div class="cart-info">
+        <a href="/cart">Кошик</a>
+    </div>
+<div class="auth-buttons">
+    {% if 'username' not in session %}
+        <a class="login-button btn" href="/login">Увійти</a>
+        <a class="register-button btn" href="/register">Зареєструватися</a>
+    {% elif 'username' in session %}
+        <a class="profile-button btn" href="/profile">Профіль</a>
+        <a class="logout-button btn" href="/logout">Вийти</a>
+    {% endif %}
+</div>
+</header>

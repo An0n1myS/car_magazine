@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Part Details</title>
+    {% include 'templates/header-links.html' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/parts.css') }}">
+</head>
+<body>
+    {% include 'templates/header.html' %}
+    <div class="content">
+        {% block content %}
+        <br>
+        <br>
+            <div class="info-container">
+                <div class="info-photo">
+                    <img src="data:image/jpeg;base64,{{ part.photos }}" alt="{{ part.part_id }}">
+                </div>
+                <div class="part-info">
+                    <h2>{{ part.name }}</h2>
+                    <br>
+                    <p><b>Ціна:</b> <i>{{ part.price }} грн.</i></p>
+                    <br>
+                    <p><b>Рейтинг товару:</b> {{ average_rating }}</p>
+                    <br>
+                    <p><b>Опис товару:</b></p>
+                    <br>
+                    <p><i>{{ part.description }}</i></p>
+                    <br>
+                    <form action="/add_to_cart" method="post">
+                        <p>Кількість товару: </p><input class="count_part" type="number" id="count" name="count" min="1" max="10">
+                        <input type="hidden" value="{{ part.part_id }}" id="part_id" name="part_id">
+                        <button class="confirm-btn">Додати у замовлення</button>
+                    </form>
+                </div>
+            </div>
+
+            <h3>Коментарі та відгуки:</h3>
+            <div class="comments-container">
+                {% for comment in comments %}
+                    <div class="comment">
+                        <span><b>{{ comment.client }}</b></span> <span> - </span><span> {{ comment.comment_date }}</span>
+                        <p><b>Рейтинг:</b>{{ comment.rating }}/10</p>
+                        <p><b>Коментар:</b> {{ comment.text }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if 'username' in session %}
+                <h3>Додати коментар:</h3>
+                <div class="comment-form">
+                    <form action="/add_comment" method="POST">
+                        <input type="number" id="comment_rating" name="comment_rating">
+                        <input type="hidden" value="{{ part.part_id }}" id="comment_part_id" name="comment_part_id">
+                        <textarea name="comment-text" placeholder="Напишіть свій коментар" required></textarea>
+                        <button type="submit">Додати коментар</button>
+                    </form>
+                </div>
+            {% elif 'username' not in session %}
+                <p>Для додавання коментаря потрібно <a href="/login">увійти</a> або <a href="/register">зареєструватися</a>.</p>
+            {% endif %}
+        {% endblock %}
+        <br>
+        <br>
+    </div>
+    {% include 'templates/footer.html' %}
+</body>
+</html>

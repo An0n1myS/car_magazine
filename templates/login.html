@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    {% include 'templates/header-links.html' %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    {% include 'templates/header.html' %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="content">
+        {% block content %}
+            <h1>Авторизація</h1>
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+            <form action="/login" method="post">
+                <label for="email">Пошта:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Авторизуватись</button>
+            </form>
+        {% endblock %}
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% include 'templates/footer.html' %}
+</body>
+</html>

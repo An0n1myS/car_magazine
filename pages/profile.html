@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'templates/header-links.html' %}
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+</head>
+<body>
+    {% include 'templates/header.html' %}
+    <div class="content">
+        <br>
+        <h1>Профіль</h1>
+        <div class="profile-details">
+            <p><strong>Ім'я:</strong> {{ user.first_name }}</p>
+            <p><strong>Прізвище:</strong> {{ user.last_name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Телефон:</strong> {{ user.phone }}</p>
+            <p><strong>Дата реєстрації:</strong> {{ user.created_at }}</p>
+        </div>
+        <h2>Замовлення</h2>
+        <br>
+        <table class="orders-table">
+            <tr>
+                <th> № замовлення</th>
+                <th>Дата замовлення</th>
+                <th>Статус</th>
+            </tr>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ order.order_date }}</td>
+                    <td>{{ order.status }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <br>
+    </div>
+    {% include 'templates/footer.html' %}
+</body>
+</html>
