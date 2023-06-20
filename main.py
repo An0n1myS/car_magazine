@@ -328,8 +328,7 @@ def create_order():
 
         connection.commit()
         return redirect(url_for('order_confirmation'))
-    return render_template('pages/create_order.html')
-
+    return render_template('pages/order_confirmation.html')
 
 # Маршрут для сторінки підтвердження замовлення
 @app.route('/order_confirmation')
@@ -338,9 +337,21 @@ def order_confirmation():
     # Отримання даних підтвердження замовлення з бази даних
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM orders WHERE client_id = %s ORDER BY order_id DESC LIMIT 1", (session['username'],))
-        order = cursor.fetchone()
-        cursor.execute("SELECT parts.name, parts.price, order_details.quantity FROM parts JOIN order_details ON parts.part_id = order_details.part_id WHERE order_details.order_id = %s", (order['order_id'],))
-        order_details = cursor.fetchall()
+        order_result = cursor.fetchone()
+
+        if order_result:
+            order_fields = [field[0] for field in cursor.description]
+            order = dict(zip(order_fields, order_result))
+
+            cursor.execute("SELECT parts.name, parts.price, order_details.quantity FROM parts JOIN order_details ON parts.part_id = order_details.part_id WHERE order_details.order_id = %s", (order['order_id'],))
+            order_details_result = cursor.fetchall()
+
+            order_details_fields = [field[0] for field in cursor.description]
+            order_details = [dict(zip(order_details_fields, row)) for row in order_details_result]
+        else:
+            order = None
+            order_details = []
+
     return render_template('pages/order_confirmation.html', order=order, order_details=order_details)
 
 
